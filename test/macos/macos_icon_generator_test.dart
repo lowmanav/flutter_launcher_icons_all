@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:flutter_launcher_icons/abs/icon_generator.dart';
-import 'package:flutter_launcher_icons/config/config.dart';
-import 'package:flutter_launcher_icons/config/macos_config.dart';
-import 'package:flutter_launcher_icons/logger.dart';
-import 'package:flutter_launcher_icons/macos/macos_icon_generator.dart';
+import 'package:flutter_launcher_icons_all/abs/icon_generator.dart';
+import 'package:flutter_launcher_icons_all/config/config.dart';
+import 'package:flutter_launcher_icons_all/config/macos_config.dart';
+import 'package:flutter_launcher_icons_all/logger.dart';
+import 'package:flutter_launcher_icons_all/macos/macos_icon_generator.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:path/path.dart' as path;
@@ -54,10 +54,8 @@ void main() {
         when(mockLogger.isVerbose).thenReturn(false);
         when(mockConfig.macOSConfig).thenReturn(mockMacOSConfig);
         when(mockMacOSConfig.generate).thenReturn(true);
-        when(mockMacOSConfig.imagePath)
-            .thenReturn(path.join(prefixPath, 'app_icon.png'));
-        when(mockConfig.imagePath)
-            .thenReturn(path.join(prefixPath, 'app_icon.png'));
+        when(mockMacOSConfig.imagePath).thenReturn(path.join(prefixPath, 'app_icon.png'));
+        when(mockConfig.imagePath).thenReturn(path.join(prefixPath, 'app_icon.png'));
       });
 
       test('should return false when macos config is not provided', () {
@@ -66,9 +64,7 @@ void main() {
         verify(mockConfig.macOSConfig).called(equals(1));
       });
 
-      test(
-          'should return false when macosConfig is not null but macos.generate is false',
-          () {
+      test('should return false when macosConfig is not null but macos.generate is false', () {
         when(mockConfig.macOSConfig).thenReturn(mockMacOSConfig);
         when(mockMacOSConfig.generate).thenReturn(false);
         expect(generator.validateRequirements(), isFalse);
@@ -76,8 +72,7 @@ void main() {
         verify(mockMacOSConfig.generate).called(equals(1));
       });
 
-      test('should return false when macos.image_path and imagePath is null',
-          () {
+      test('should return false when macos.image_path and imagePath is null', () {
         when(mockMacOSConfig.imagePath).thenReturn(null);
         when(mockConfig.imagePath).thenReturn(null);
         expect(generator.validateRequirements(), isFalse);
@@ -126,12 +121,12 @@ void main() {
         d.dir('macos/Runner/Assets.xcassets/AppIcon.appiconset', [
           d.file('Contents.json', templates.macOSContentsJsonFile),
         ]),
-        d.file('flutter_launcher_icons.yaml', templates.fliConfigTemplate),
+        d.file('flutter_launcher_icons_all.yaml', templates.fliConfigTemplate),
         d.file('app_icon.png', imageFile.readAsBytesSync()),
       ]).create();
       prefixPath = path.join(d.sandbox, 'fli_test');
       config = Config.loadConfigFromPath(
-        'flutter_launcher_icons.yaml',
+        'flutter_launcher_icons_all.yaml',
         prefixPath,
       )!;
       context = IconGeneratorContext(

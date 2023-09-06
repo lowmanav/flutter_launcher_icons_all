@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'web_config.g.dart';
 
-/// The flutter_launcher_icons configuration set for Web
+/// The flutter_launcher_icons_all configuration set for Web
 @JsonSerializable(
   anyMap: true,
   checked: true,

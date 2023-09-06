@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'macos_config.g.dart';
 
-/// The flutter_launcher_icons configuration set for MacOS
+/// The flutter_launcher_icons_all configuration set for MacOS
 @JsonSerializable(
   anyMap: true,
   checked: true,

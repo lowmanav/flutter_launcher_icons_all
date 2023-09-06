@@ -1,18 +1,18 @@
 import 'dart:io';
 
 import 'package:checked_yaml/checked_yaml.dart' as yaml;
-import 'package:flutter_launcher_icons/config/macos_config.dart';
-import 'package:flutter_launcher_icons/config/web_config.dart';
-import 'package:flutter_launcher_icons/config/windows_config.dart';
-import 'package:flutter_launcher_icons/constants.dart' as constants;
-import 'package:flutter_launcher_icons/custom_exceptions.dart';
-import 'package:flutter_launcher_icons/utils.dart' as utils;
+import 'package:flutter_launcher_icons_all/config/macos_config.dart';
+import 'package:flutter_launcher_icons_all/config/web_config.dart';
+import 'package:flutter_launcher_icons_all/config/windows_config.dart';
+import 'package:flutter_launcher_icons_all/constants.dart' as constants;
+import 'package:flutter_launcher_icons_all/custom_exceptions.dart';
+import 'package:flutter_launcher_icons_all/utils.dart' as utils;
 import 'package:json_annotation/json_annotation.dart';
 import 'package:path/path.dart' as path;
 
 part 'config.g.dart';
 
-/// A model representing the flutter_launcher_icons configuration
+/// A model representing the flutter_launcher_icons_all configuration
 @JsonSerializable(
   anyMap: true,
   checked: true,
@@ -79,12 +79,12 @@ class Config {
             // if we have flutter_icons configuration ...
             if (json['flutter_icons'] != null) {
               stderr.writeln('\n⚠ Warning: flutter_icons has been deprecated '
-                  'please use flutter_launcher_icons instead in your yaml files');
+                  'please use flutter_launcher_icons_all instead in your yaml files');
               return Config.fromJson(json['flutter_icons']);
             }
-            // if we have flutter_launcher_icons configuration ...
-            if (json['flutter_launcher_icons'] != null) {
-              return Config.fromJson(json['flutter_launcher_icons']);
+            // if we have flutter_launcher_icons_all configuration ...
+            if (json['flutter_launcher_icons_all'] != null) {
+              return Config.fromJson(json['flutter_launcher_icons_all']);
             }
           }
           return null;
@@ -153,17 +153,11 @@ class Config {
 
   /// whether or not there is configuration for adaptive icons for android
   bool get hasAndroidAdaptiveConfig =>
-      isNeedingNewAndroidIcon &&
-      adaptiveIconForeground != null &&
-      adaptiveIconBackground != null;
+      isNeedingNewAndroidIcon && adaptiveIconForeground != null && adaptiveIconBackground != null;
 
   /// Checks if contains any platform config
   bool get hasPlatformConfig {
-    return ios != false ||
-        android != false ||
-        webConfig != null ||
-        windowsConfig != null ||
-        macOSConfig != null;
+    return ios != false || android != false || webConfig != null || windowsConfig != null || macOSConfig != null;
   }
 
   /// Whether or not configuration for generating Web icons exist
@@ -192,7 +186,7 @@ class Config {
   String? getImagePathAndroid() => imagePathAndroid ?? imagePath;
 
   // TODO(RatakondalaArun): refactor after Android & iOS configs will be refactored to the new schema
-  // https://github.com/fluttercommunity/flutter_launcher_icons/issues/394
+  // https://github.com/fluttercommunity/flutter_launcher_icons_all/issues/394
   /// get the image path for IOS
   String? getImagePathIOS() => imagePathIOS ?? imagePath;
 

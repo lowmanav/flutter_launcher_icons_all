@@ -1,4 +1,4 @@
-import 'package:flutter_launcher_icons/utils.dart' as utils;
+import 'package:flutter_launcher_icons_all/utils.dart' as utils;
 import 'package:path/path.dart' as path;
 import 'package:test/test.dart';
 import 'package:test_descriptor/test_descriptor.dart' as d;
@@ -80,8 +80,7 @@ void main() {
         d.dir('fli_test', [d.dir('dir_exists')]).validate(),
         completes,
       );
-      final result = utils
-          .createDirIfNotExist(path.join(d.sandbox, 'fli_test', 'dir_exists'));
+      final result = utils.createDirIfNotExist(path.join(d.sandbox, 'fli_test', 'dir_exists'));
       expect(result.existsSync(), isTrue);
       await expectLater(
         d.dir('fli_test', [d.dir('dir_exists')]).validate(),

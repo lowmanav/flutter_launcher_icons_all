@@ -1,6 +1,6 @@
-import 'package:flutter_launcher_icons/abs/icon_generator.dart';
-import 'package:flutter_launcher_icons/config/config.dart';
-import 'package:flutter_launcher_icons/logger.dart';
+import 'package:flutter_launcher_icons_all/abs/icon_generator.dart';
+import 'package:flutter_launcher_icons_all/config/config.dart';
+import 'package:flutter_launcher_icons_all/logger.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:path/path.dart' as path;
@@ -30,8 +30,7 @@ void main() {
         ),
       );
     });
-    test('should execute createIcons() when validateRequiremnts() returns true',
-        () {
+    test('should execute createIcons() when validateRequiremnts() returns true', () {
       when(mockGenerator.validateRequirements()).thenReturn(true);
       generateIconsFor(
         config: mockFLIConfig,
@@ -44,9 +43,7 @@ void main() {
       verify(mockGenerator.createIcons()).called(equals(1));
     });
 
-    test(
-        'should not execute createIcons() when validateRequiremnts() returns false',
-        () {
+    test('should not execute createIcons() when validateRequiremnts() returns false', () {
       when(mockGenerator.validateRequirements()).thenReturn(false);
       generateIconsFor(
         config: mockFLIConfig,
@@ -61,8 +58,7 @@ void main() {
 
     test('should skip platform if any exception occurred', () {
       when(mockGenerator.validateRequirements()).thenReturn(true);
-      when(mockGenerator.createIcons())
-          .thenThrow(Exception('should-skip-platform'));
+      when(mockGenerator.createIcons()).thenThrow(Exception('should-skip-platform'));
       generateIconsFor(
         config: mockFLIConfig,
         flavor: null,

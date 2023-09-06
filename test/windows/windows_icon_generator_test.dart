@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:flutter_launcher_icons/abs/icon_generator.dart';
-import 'package:flutter_launcher_icons/config/config.dart';
-import 'package:flutter_launcher_icons/config/windows_config.dart';
-import 'package:flutter_launcher_icons/logger.dart';
-import 'package:flutter_launcher_icons/windows/windows_icon_generator.dart';
+import 'package:flutter_launcher_icons_all/abs/icon_generator.dart';
+import 'package:flutter_launcher_icons_all/config/config.dart';
+import 'package:flutter_launcher_icons_all/config/windows_config.dart';
+import 'package:flutter_launcher_icons_all/logger.dart';
+import 'package:flutter_launcher_icons_all/windows/windows_icon_generator.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:path/path.dart' as path;
@@ -49,10 +49,8 @@ void main() {
         when(mockLogger.isVerbose).thenReturn(false);
         when(mockConfig.windowsConfig).thenReturn(mockWindowsConfig);
         when(mockWindowsConfig.generate).thenReturn(true);
-        when(mockWindowsConfig.imagePath)
-            .thenReturn(path.join(prefixPath, 'app_icon.png'));
-        when(mockConfig.imagePath)
-            .thenReturn(path.join(prefixPath, 'app_icon.png'));
+        when(mockWindowsConfig.imagePath).thenReturn(path.join(prefixPath, 'app_icon.png'));
+        when(mockConfig.imagePath).thenReturn(path.join(prefixPath, 'app_icon.png'));
         when(mockWindowsConfig.iconSize).thenReturn(48);
       });
 
@@ -62,9 +60,7 @@ void main() {
         verify(mockConfig.windowsConfig).called(equals(1));
       });
 
-      test(
-          'should return false when windowsConfig is not null but windows.generate is false',
-          () {
+      test('should return false when windowsConfig is not null but windows.generate is false', () {
         when(mockConfig.windowsConfig).thenReturn(mockWindowsConfig);
         when(mockWindowsConfig.generate).thenReturn(false);
         expect(generator.validateRequirements(), isFalse);
@@ -72,8 +68,7 @@ void main() {
         verify(mockWindowsConfig.generate).called(equals(1));
       });
 
-      test('should return false when windows.image_path and imagePath is null',
-          () {
+      test('should return false when windows.image_path and imagePath is null', () {
         when(mockWindowsConfig.imagePath).thenReturn(null);
         when(mockConfig.imagePath).thenReturn(null);
         expect(generator.validateRequirements(), isFalse);
@@ -84,9 +79,7 @@ void main() {
         ]);
       });
 
-      test(
-          'should return false when windows.icon_size is not between 48 and 256',
-          () {
+      test('should return false when windows.icon_size is not between 48 and 256', () {
         when(mockWindowsConfig.iconSize).thenReturn(40);
         expect(generator.validateRequirements(), isFalse);
         verify(mockWindowsConfig.iconSize).called(equals(3));
@@ -132,13 +125,13 @@ void main() {
       expect(imageFile.existsSync(), isTrue);
       await d.dir('fli_test', [
         d.dir('windows'),
-        d.file('flutter_launcher_icons.yaml', templates.fliWindowsConfig),
+        d.file('flutter_launcher_icons_all.yaml', templates.fliWindowsConfig),
         d.file('pubspec.yaml', templates.pubspecTemplate),
         d.file('app_icon.png', imageFile.readAsBytesSync()),
       ]).create();
       prefixPath = path.join(d.sandbox, 'fli_test');
       config = Config.loadConfigFromPath(
-        'flutter_launcher_icons.yaml',
+        'flutter_launcher_icons_all.yaml',
         prefixPath,
       )!;
       context = IconGeneratorContext(

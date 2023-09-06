@@ -1,15 +1,14 @@
-import 'package:flutter_launcher_icons/abs/icon_generator.dart';
-import 'package:flutter_launcher_icons/constants.dart' as constants;
-import 'package:flutter_launcher_icons/custom_exceptions.dart';
-import 'package:flutter_launcher_icons/utils.dart' as utils;
+import 'package:flutter_launcher_icons_all/abs/icon_generator.dart';
+import 'package:flutter_launcher_icons_all/constants.dart' as constants;
+import 'package:flutter_launcher_icons_all/custom_exceptions.dart';
+import 'package:flutter_launcher_icons_all/utils.dart' as utils;
 import 'package:image/image.dart';
 import 'package:path/path.dart' as path;
 
 /// A Implementation of [IconGenerator] for Windows
 class WindowsIconGenerator extends IconGenerator {
   /// Creates a instance of [WindowsIconGenerator]
-  WindowsIconGenerator(IconGeneratorContext context)
-      : super(context, 'Windows');
+  WindowsIconGenerator(IconGeneratorContext context) : super(context, 'Windows');
 
   @override
   void createIcons() {
@@ -18,14 +17,12 @@ class WindowsIconGenerator extends IconGenerator {
       context.windowsConfig!.imagePath ?? context.config.imagePath,
     );
 
-    context.logger
-        .verbose('Decoding and loading image file from $imgFilePath...');
+    context.logger.verbose('Decoding and loading image file from $imgFilePath...');
     final imgFile = utils.decodeImageFile(imgFilePath);
     // TODO(RatakondalaArun): remove null check
     // #utils.decodeImageFile never returns null instead it throws Exception
     if (imgFile == null) {
-      context.logger
-          .error('Image File not found at given path $imgFilePath...');
+      context.logger.error('Image File not found at given path $imgFilePath...');
       throw FileNotFoundException(imgFilePath);
     }
 
@@ -53,8 +50,7 @@ class WindowsIconGenerator extends IconGenerator {
 
     // if icon_size is given it should be between 48<=icon_size<=256
     // because .ico only supports this size
-    if (windowsConfig.iconSize != null &&
-        (windowsConfig.iconSize! < 48 || windowsConfig.iconSize! > 256)) {
+    if (windowsConfig.iconSize != null && (windowsConfig.iconSize! < 48 || windowsConfig.iconSize! > 256)) {
       context.logger.error(
         'Invalid windows.icon_size=${windowsConfig.iconSize}. Icon size should be between 48<=icon_size<=256',
       );

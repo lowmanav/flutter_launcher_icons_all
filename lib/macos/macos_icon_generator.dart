@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter_launcher_icons/abs/icon_generator.dart';
-import 'package:flutter_launcher_icons/constants.dart' as constants;
-import 'package:flutter_launcher_icons/custom_exceptions.dart';
-import 'package:flutter_launcher_icons/macos/macos_icon_template.dart';
-import 'package:flutter_launcher_icons/utils.dart' as utils;
+import 'package:flutter_launcher_icons_all/abs/icon_generator.dart';
+import 'package:flutter_launcher_icons_all/constants.dart' as constants;
+import 'package:flutter_launcher_icons_all/custom_exceptions.dart';
+import 'package:flutter_launcher_icons_all/macos/macos_icon_template.dart';
+import 'package:flutter_launcher_icons_all/utils.dart' as utils;
 import 'package:image/image.dart';
 import 'package:path/path.dart' as path;
 
@@ -34,8 +34,7 @@ class MacOSIconGenerator extends IconGenerator {
       context.config.macOSConfig!.imagePath ?? context.config.imagePath,
     );
 
-    context.logger
-        .verbose('Decoding and loading image file at $imgFilePath...');
+    context.logger.verbose('Decoding and loading image file at $imgFilePath...');
     final imgFile = utils.decodeImageFile(imgFilePath);
     if (imgFile == null) {
       context.logger.error('Image File not found at give path $imgFilePath...');
@@ -65,11 +64,11 @@ class MacOSIconGenerator extends IconGenerator {
     if (macOSConfig.imagePath == null && context.config.imagePath == null) {
       context.logger
         ..verbose({
-          'flutter_launcher_icons.macos.image_path': macOSConfig.imagePath,
-          'flutter_launcher_icons.image_path': context.config.imagePath,
+          'flutter_launcher_icons_all.macos.image_path': macOSConfig.imagePath,
+          'flutter_launcher_icons_all.image_path': context.config.imagePath,
         })
         ..error(
-          'Missing image_path. Either provide "flutter_launcher_icons.macos.image_path" or "flutter_launcher_icons.image_path"',
+          'Missing image_path. Either provide "flutter_launcher_icons_all.macos.image_path" or "flutter_launcher_icons_all.image_path"',
         );
 
       return false;
@@ -108,17 +107,12 @@ class MacOSIconGenerator extends IconGenerator {
   }
 
   void _updateContentsFile() {
-    final contentsFilePath =
-        File(path.join(context.prefixPath, constants.macOSContentsFilePath));
-    final contentsConfig =
-        jsonDecode(contentsFilePath.readAsStringSync()) as Map<String, dynamic>;
+    final contentsFilePath = File(path.join(context.prefixPath, constants.macOSContentsFilePath));
+    final contentsConfig = jsonDecode(contentsFilePath.readAsStringSync()) as Map<String, dynamic>;
     contentsConfig
       ..remove('images')
-      ..['images'] = _iconSizeTemplates
-          .map<Map<String, dynamic>>((e) => e.iconContent)
-          .toList();
+      ..['images'] = _iconSizeTemplates.map<Map<String, dynamic>>((e) => e.iconContent).toList();
 
-    contentsFilePath
-        .writeAsStringSync(utils.prettifyJsonEncode(contentsConfig));
+    contentsFilePath.writeAsStringSync(utils.prettifyJsonEncode(contentsConfig));
   }
 }

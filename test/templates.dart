@@ -1,5 +1,5 @@
 const fliConfigTemplate = r'''
-flutter_launcher_icons:
+flutter_launcher_icons_all:
   android: true
   ios: true
   image_path: "assets/images/icon-128x128.png"
@@ -28,7 +28,7 @@ flutter_launcher_icons:
 const flavorFLIConfigTemplate = fliConfigTemplate;
 
 const fliWebConfig = r'''
-flutter_launcher_icons:
+flutter_launcher_icons_all:
   web:
     generate: true
     image_path: "app_icon.png" # filepath
@@ -39,7 +39,7 @@ flutter_launcher_icons:
 ''';
 
 const fliWindowsConfig = r'''
-flutter_launcher_icons:
+flutter_launcher_icons_all:
   windows:
     generate: true
     image_path: "app_icon.png"
@@ -47,7 +47,7 @@ flutter_launcher_icons:
 ''';
 
 const invalidfliConfigTemplate = r'''
-# flutter_launcher_icons
+# flutter_launcher_icons_all
 android: true
 ios: true
 image_path: "assets/images/icon-128x128.png"
@@ -83,8 +83,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-  flutter_launcher_icons:
-    path: C:/Users/asus/projects/flutter_launcher_icons
+  flutter_launcher_icons_all:
+    path: C:/Users/asus/projects/flutter_launcher_icons_all
 
 flutter:
   uses-material-design: true
@@ -103,7 +103,7 @@ flutter:
         - asset: fonts/TrajanPro_Bold.ttf
           weight: 700
 
-flutter_launcher_icons:
+flutter_launcher_icons_all:
   android: true
   ios: true
   image_path: "assets/images/icon-128x128.png"
@@ -147,8 +147,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-  flutter_launcher_icons:
-    path: C:/Users/asus/projects/flutter_launcher_icons
+  flutter_launcher_icons_all:
+    path: C:/Users/asus/projects/flutter_launcher_icons_all
 
 flutter:
   uses-material-design: true
@@ -167,7 +167,7 @@ flutter:
         - asset: fonts/TrajanPro_Bold.ttf
           weight: 700
 
-flutter_launcher_icons:
+flutter_launcher_icons_all:
   android: true
  invalid_indented_key_key
   ios: true

@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:flutter_launcher_icons/abs/icon_generator.dart';
-import 'package:flutter_launcher_icons/config/config.dart';
-import 'package:flutter_launcher_icons/logger.dart';
-import 'package:flutter_launcher_icons/web/web_icon_generator.dart';
+import 'package:flutter_launcher_icons_all/abs/icon_generator.dart';
+import 'package:flutter_launcher_icons_all/config/config.dart';
+import 'package:flutter_launcher_icons_all/logger.dart';
+import 'package:flutter_launcher_icons_all/web/web_icon_generator.dart';
 import 'package:path/path.dart' as path;
 import 'package:test/test.dart';
 import 'package:test_descriptor/test_descriptor.dart' as d;
@@ -27,13 +27,13 @@ void main() {
           d.file('index.html', templates.webIndexTemplate),
           d.file('manifest.json', templates.webManifestTemplate),
         ]),
-        d.file('flutter_launcher_icons.yaml', templates.fliWebConfig),
+        d.file('flutter_launcher_icons_all.yaml', templates.fliWebConfig),
         d.file('pubspec.yaml', templates.pubspecTemplate),
         d.file('app_icon.png', imageFile.readAsBytesSync()),
       ]).create();
       prefixPath = path.join(d.sandbox, 'fli_test');
       config = Config.loadConfigFromPath(
-        'flutter_launcher_icons.yaml',
+        'flutter_launcher_icons_all.yaml',
         prefixPath,
       )!;
       context = IconGeneratorContext(
@@ -64,7 +64,7 @@ void main() {
             // this manifest.json get updated in fs
             d.file('manifest.json', anything),
           ]),
-          d.file('flutter_launcher_icons.yaml', anything),
+          d.file('flutter_launcher_icons_all.yaml', anything),
           d.file('pubspec.yaml', templates.pubspecTemplate)
         ]).validate(),
         completes,

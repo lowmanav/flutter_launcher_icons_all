@@ -2,28 +2,28 @@ import 'dart:io';
 
 import 'package:args/args.dart';
 
-import 'package:flutter_launcher_icons/constants.dart';
-import 'package:flutter_launcher_icons/src/version.dart';
+import 'package:flutter_launcher_icons_all/constants.dart';
+import 'package:flutter_launcher_icons_all/src/version.dart';
 
-const _defaultConfigFileName = './flutter_launcher_icons.yaml';
+const _defaultConfigFileName = './flutter_launcher_icons_all.yaml';
 
 /// The function will be called from command line
 /// using the following command:
 /// ```sh
-/// flutter pub run flutter_launcher_icons:generate
+/// flutter pub run flutter_launcher_icons_all:generate
 /// ```
 ///
-/// Calling this function will generate a flutter_launcher_icons.yaml file
+/// Calling this function will generate a flutter_launcher_icons_all.yaml file
 /// with a default config template.
 ///
 /// This command can take 2 optional arguments:
-/// - --override: This will override the current `flutter_launcher_icons.yaml`
+/// - --override: This will override the current `flutter_launcher_icons_all.yaml`
 /// file if it exists, if not provided, the file will not be overridden and
 /// a message will be printed to the console.
 ///
 /// - --fileName: This flag will take a file name as an argument and
 /// will generate the config format in that file instead of the default
-/// `flutter_launcher_icons.yaml` file, if not provided,
+/// `flutter_launcher_icons_all.yaml` file, if not provided,
 /// the default file will be used.
 void main(List<String> arguments) {
   print(introMessage(packageVersion));
@@ -73,7 +73,7 @@ void _generateConfigFile(File configFile) {
     print('\nConfig file generated successfully 🎉');
     print(
       'You can now use this new config file by using the command below:\n\n'
-      'flutter pub run flutter_launcher_icons'
+      'flutter pub run flutter_launcher_icons_all'
       '${configFile.path == _defaultConfigFileName ? '' : ' -f ${configFile.path}'}\n',
     );
   } on Exception catch (e) {
@@ -82,8 +82,8 @@ void _generateConfigFile(File configFile) {
 }
 
 const _configFileTemplate = '''
-# flutter pub run flutter_launcher_icons
-flutter_launcher_icons:
+# flutter pub run flutter_launcher_icons_all
+flutter_launcher_icons_all:
   image_path: "assets/icon/icon.png"
 
   android: "launcher_icon"

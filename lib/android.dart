@@ -2,12 +2,12 @@
 
 import 'dart:io';
 
-import 'package:flutter_launcher_icons/config/config.dart';
-import 'package:flutter_launcher_icons/constants.dart';
-import 'package:flutter_launcher_icons/constants.dart' as constants;
-import 'package:flutter_launcher_icons/custom_exceptions.dart';
-import 'package:flutter_launcher_icons/utils.dart' as utils;
-import 'package:flutter_launcher_icons/xml_templates.dart' as xml_template;
+import 'package:flutter_launcher_icons_all/config/config.dart';
+import 'package:flutter_launcher_icons_all/constants.dart';
+import 'package:flutter_launcher_icons_all/constants.dart' as constants;
+import 'package:flutter_launcher_icons_all/custom_exceptions.dart';
+import 'package:flutter_launcher_icons_all/utils.dart' as utils;
+import 'package:flutter_launcher_icons_all/xml_templates.dart' as xml_template;
 import 'package:image/image.dart';
 import 'package:path/path.dart' as path;
 
@@ -165,9 +165,7 @@ void createAdaptiveIconMipmapXmlFile(
     });
   } else {
     File(
-      constants.androidAdaptiveXmlFolder(flavor) +
-          constants.androidDefaultIconName +
-          '.xml',
+      constants.androidAdaptiveXmlFolder(flavor) + constants.androidDefaultIconName + '.xml',
     ).create(recursive: true).then((File adaptiveIcon) {
       adaptiveIcon.writeAsString(xml_template.icLauncherXml);
     });
@@ -207,9 +205,7 @@ void _createAdaptiveBackgrounds(
     });
   } else {
     File(
-      constants.androidAdaptiveXmlFolder(flavor) +
-          constants.androidDefaultIconName +
-          '.xml',
+      constants.androidAdaptiveXmlFolder(flavor) + constants.androidDefaultIconName + '.xml',
     ).create(recursive: true).then((File adaptiveIcon) {
       adaptiveIcon.writeAsString(xml_template.icLauncherDrawableBackgroundXml);
     });
@@ -218,9 +214,7 @@ void _createAdaptiveBackgrounds(
 
 /// Creates a colors.xml file if it was missing from android/app/src/main/res/values/colors.xml
 void createNewColorsFile(String backgroundColor, String? flavor) {
-  File(constants.androidColorsFile(flavor))
-      .create(recursive: true)
-      .then((File colorsFile) {
+  File(constants.androidColorsFile(flavor)).create(recursive: true).then((File colorsFile) {
     colorsFile.writeAsString(xml_template.colorsXml).then((File file) {
       updateColorsFile(colorsFile, backgroundColor);
     });
@@ -257,7 +251,7 @@ void updateColorsFile(File colorsFile, String backgroundColor) {
 /// Overrides the existing launcher icons in the project
 /// Note: Do not change interpolation unless you end up with better results (see issue for result when using cubic
 /// interpolation)
-/// https://github.com/fluttercommunity/flutter_launcher_icons/issues/101#issuecomment-495528733
+/// https://github.com/fluttercommunity/flutter_launcher_icons_all/issues/101#issuecomment-495528733
 void overwriteExistingIcons(
   AndroidIconTemplate template,
   Image image,
@@ -266,10 +260,7 @@ void overwriteExistingIcons(
 ) {
   final Image newFile = utils.createResizedImage(template.size, image);
   File(
-    constants.androidResFolder(flavor) +
-        template.directoryName +
-        '/' +
-        filename,
+    constants.androidResFolder(flavor) + template.directoryName + '/' + filename,
   ).create(recursive: true).then((File file) {
     file.writeAsBytesSync(encodePng(newFile));
   });
@@ -277,7 +268,7 @@ void overwriteExistingIcons(
 
 /// Saves new launcher icons to the project, keeping the old launcher icons.
 /// Note: Do not change interpolation unless you end up with better results
-/// https://github.com/fluttercommunity/flutter_launcher_icons/issues/101#issuecomment-495528733
+/// https://github.com/fluttercommunity/flutter_launcher_icons_all/issues/101#issuecomment-495528733
 void _saveNewImages(
   AndroidIconTemplate template,
   Image image,
@@ -286,10 +277,7 @@ void _saveNewImages(
 ) {
   final Image newFile = utils.createResizedImage(template.size, image);
   File(
-    constants.androidResFolder(flavor) +
-        template.directoryName +
-        '/' +
-        iconFilePath,
+    constants.androidResFolder(flavor) + template.directoryName + '/' + iconFilePath,
   ).create(recursive: true).then((File file) {
     file.writeAsBytesSync(encodePng(newFile));
   });
@@ -304,10 +292,8 @@ Future<void> overwriteAndroidManifestWithNewLauncherIcon(
   File androidManifestFile,
 ) async {
   // we do not use `file.readAsLinesSync()` here because that always gets rid of the last empty newline
-  final List<String> oldManifestLines =
-      (await androidManifestFile.readAsString()).split('\n');
-  final List<String> transformedLines =
-      _transformAndroidManifestWithNewLauncherIcon(oldManifestLines, iconName);
+  final List<String> oldManifestLines = (await androidManifestFile.readAsString()).split('\n');
+  final List<String> transformedLines = _transformAndroidManifestWithNewLauncherIcon(oldManifestLines, iconName);
   await androidManifestFile.writeAsString(transformedLines.join('\n'));
 }
 
@@ -359,8 +345,7 @@ int? _getMinSdkFromFile(File file) {
   final List<String> lines = file.readAsLinesSync();
   for (String line in lines) {
     if (line.contains('minSdkVersion')) {
-      if (line.contains('//') &&
-          line.indexOf('//') < line.indexOf('minSdkVersion')) {
+      if (line.contains('//') && line.indexOf('//') < line.indexOf('minSdkVersion')) {
         // This line is commented
         continue;
       }
@@ -381,8 +366,7 @@ String? _getFlutterSdkPathFromLocalProperties(File file) {
     if (!line.contains('flutter.sdk=')) {
       continue;
     }
-    if (line.contains('#') &&
-        line.indexOf('#') < line.indexOf('flutter.sdk=')) {
+    if (line.contains('#') && line.indexOf('#') < line.indexOf('flutter.sdk=')) {
       continue;
     }
     final flutterSdkPath = line.split('=').last.trim();
@@ -396,22 +380,19 @@ String? _getFlutterSdkPathFromLocalProperties(File file) {
 
 /// Retrives value of `minSdkVersion` from `flutter.gradle`
 int? _getMinSdkFlutterGradle(File localPropertiesFile) {
-  final flutterRoot =
-      _getFlutterSdkPathFromLocalProperties(localPropertiesFile);
+  final flutterRoot = _getFlutterSdkPathFromLocalProperties(localPropertiesFile);
   if (flutterRoot == null) {
     return null;
   }
 
-  final flutterGradleFile =
-      File(path.join(flutterRoot, constants.androidFlutterGardlePath));
+  final flutterGradleFile = File(path.join(flutterRoot, constants.androidFlutterGardlePath));
 
   final List<String> lines = flutterGradleFile.readAsLinesSync();
   for (String line in lines) {
     if (!line.contains('static int minSdkVersion =')) {
       continue;
     }
-    if (line.contains('//') &&
-        line.indexOf('//') < line.indexOf('static int minSdkVersion =')) {
+    if (line.contains('//') && line.indexOf('//') < line.indexOf('static int minSdkVersion =')) {
       continue;
     }
     final minSdk = line.split('=').last.trim();

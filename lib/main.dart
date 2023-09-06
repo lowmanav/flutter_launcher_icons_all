@@ -3,25 +3,25 @@
 import 'dart:io';
 
 import 'package:args/args.dart';
-import 'package:flutter_launcher_icons/abs/icon_generator.dart';
-import 'package:flutter_launcher_icons/android.dart' as android_launcher_icons;
-import 'package:flutter_launcher_icons/config/config.dart';
-import 'package:flutter_launcher_icons/constants.dart' as constants;
-import 'package:flutter_launcher_icons/constants.dart';
-import 'package:flutter_launcher_icons/custom_exceptions.dart';
-import 'package:flutter_launcher_icons/ios.dart' as ios_launcher_icons;
-import 'package:flutter_launcher_icons/logger.dart';
-import 'package:flutter_launcher_icons/macos/macos_icon_generator.dart';
-import 'package:flutter_launcher_icons/web/web_icon_generator.dart';
-import 'package:flutter_launcher_icons/windows/windows_icon_generator.dart';
+import 'package:flutter_launcher_icons_all/abs/icon_generator.dart';
+import 'package:flutter_launcher_icons_all/android.dart' as android_launcher_icons;
+import 'package:flutter_launcher_icons_all/config/config.dart';
+import 'package:flutter_launcher_icons_all/constants.dart' as constants;
+import 'package:flutter_launcher_icons_all/constants.dart';
+import 'package:flutter_launcher_icons_all/custom_exceptions.dart';
+import 'package:flutter_launcher_icons_all/ios.dart' as ios_launcher_icons;
+import 'package:flutter_launcher_icons_all/logger.dart';
+import 'package:flutter_launcher_icons_all/macos/macos_icon_generator.dart';
+import 'package:flutter_launcher_icons_all/web/web_icon_generator.dart';
+import 'package:flutter_launcher_icons_all/windows/windows_icon_generator.dart';
 import 'package:path/path.dart' as path;
 
 const String fileOption = 'file';
 const String helpFlag = 'help';
 const String verboseFlag = 'verbose';
 const String prefixOption = 'prefix';
-const String defaultConfigFile = 'flutter_launcher_icons.yaml';
-const String flavorConfigFilePattern = r'^flutter_launcher_icons-(.*).yaml$';
+const String defaultConfigFile = 'flutter_launcher_icons_all.yaml';
+const String flavorConfigFilePattern = r'^flutter_launcher_icons_all-(.*).yaml$';
 
 List<String> getFlavors() {
   final List<String> flavors = [];
@@ -76,10 +76,9 @@ Future<void> createIconsFromArguments(List<String> arguments) async {
 
   // Create icons
   if (!hasFlavors) {
-    // Load configs from given file(defaults to ./flutter_launcher_icons.yaml) or from ./pubspec.yaml
+    // Load configs from given file(defaults to ./flutter_launcher_icons_all.yaml) or from ./pubspec.yaml
 
-    final flutterLauncherIconsConfigs =
-        loadConfigFileFromArgResults(argResults);
+    final flutterLauncherIconsConfigs = loadConfigFileFromArgResults(argResults);
     if (flutterLauncherIconsConfigs == null) {
       throw NoConfigFoundException(
         'No configuration found in $defaultConfigFile or in ${constants.pubspecFilePath}. '
@@ -102,8 +101,7 @@ Future<void> createIconsFromArguments(List<String> arguments) async {
     try {
       for (String flavor in flavors) {
         print('\nFlavor: $flavor');
-        final flutterLauncherIconsConfigs =
-            Config.loadConfigFromFlavor(flavor, prefixPath);
+        final flutterLauncherIconsConfigs = Config.loadConfigFromFlavor(flavor, prefixPath);
         if (flutterLauncherIconsConfigs == null) {
           throw NoConfigFoundException(
             'No configuration found for $flavor flavor.',

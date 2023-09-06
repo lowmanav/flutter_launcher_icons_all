@@ -2,38 +2,37 @@
 
 ## 0.13.1 (15th April 2023)
 
-- Can now use `flutter_launcher_icons` instead of `flutter_icons` [#478](https://github.com/fluttercommunity/flutter_launcher_icons/pull/478)
-- Can use command `flutter pub run flutter_launcher_icons:generate` to automatically generate config file [#475](https://github.com/fluttercommunity/flutter_launcher_icons/pull/475)
-
+- Can now use `flutter_launcher_iconsflutter_launcher_icons` instead of `flutter_icons` [#478](https://github.com/fluttercommunity/flutter_launcher_icons_all/pull/478)
+- Can use command `flutter pub run flutter_launcher_icons:generate` to automatically generate config file [#475](https://github.com/fluttercommunity/flutter_launcher_icons_all/pull/475)
 
 ## 0.13.0 (7th April 2023)
 
-- Fix remove alpha for iOS [#464](https://github.com/fluttercommunity/flutter_launcher_icons/pull/464)
-- Updating code style [#472](https://github.com/fluttercommunity/flutter_launcher_icons/pull/472)
-- Updated out of bounds dependency [#473](https://github.com/fluttercommunity/flutter_launcher_icons/pull/473)
+- Fix remove alpha for iOS [#464](https://github.com/fluttercommunity/flutter_launcher_icons_all/pull/464)
+- Updating code style [#472](https://github.com/fluttercommunity/flutter_launcher_icons_all/pull/472)
+- Updated out of bounds dependency [#473](https://github.com/fluttercommunity/flutter_launcher_icons_all/pull/473)
 
 ## 0.12.0 (24th February 2023)
 
-- Updated image package and other packages [#447](https://github.com/fluttercommunity/flutter_launcher_icons/pull/447)
+- Updated image package and other packages [#447](https://github.com/fluttercommunity/flutter_launcher_icons_all/pull/447)
 
 ## 0.11.0 (27th September 2022)
-    
-- Support for Macos Icons [#407](https://github.com/fluttercommunity/flutter_launcher_icons/pull/407)
-- Cli-improvement [#400](https://github.com/fluttercommunity/flutter_launcher_icons/pull/400)
-- Add `repository` and `issue_tracker` [#411](https://github.com/fluttercommunity/flutter_launcher_icons/pull/411) (thanks to [@patelpathik](https://github.com/patelpathik))
-- Fix indent in web/manifest.json [#407](https://github.com/fluttercommunity/flutter_launcher_icons/pull/407)
-- Fix the icons 50 and 57 in `contents.json` [#412](https://github.com/fluttercommunity/flutter_launcher_icons/pull/412) (thanks to [@adnanjpg](https://github.com/adnanjpg))
-- Fix typos [#405](https://github.com/fluttercommunity/flutter_launcher_icons/pull/405) (thanks to [@edwardmp](https://github.com/edwardmp))
-- Added newline to EOF [#325](https://github.com/fluttercommunity/flutter_launcher_icons/pull/325) (thanks to [@sandersaelmans](https://github.com/sandersaelmans))
+
+- Support for Macos Icons [#407](https://github.com/fluttercommunity/flutter_launcher_icons_all/pull/407)
+- Cli-improvement [#400](https://github.com/fluttercommunity/flutter_launcher_icons_all/pull/400)
+- Add `repository` and `issue_tracker` [#411](https://github.com/fluttercommunity/flutter_launcher_icons_all/pull/411) (thanks to [@patelpathik](https://github.com/patelpathik))
+- Fix indent in web/manifest.json [#407](https://github.com/fluttercommunity/flutter_launcher_icons_all/pull/407)
+- Fix the icons 50 and 57 in `contents.json` [#412](https://github.com/fluttercommunity/flutter_launcher_icons_all/pull/412) (thanks to [@adnanjpg](https://github.com/adnanjpg))
+- Fix typos [#405](https://github.com/fluttercommunity/flutter_launcher_icons_all/pull/405) (thanks to [@edwardmp](https://github.com/edwardmp))
+- Added newline to EOF [#325](https://github.com/fluttercommunity/flutter_launcher_icons_all/pull/325) (thanks to [@sandersaelmans](https://github.com/sandersaelmans))
 
 ## 0.10.0 (2nd August 2022)
 
-- Support for Web Icons [#374](https://github.com/fluttercommunity/flutter_launcher_icons/pull/374)
-- Support for Windows Icons [#382](https://github.com/fluttercommunity/flutter_launcher_icons/pull/382)
-- Added missing IOS icon sizes [#298](https://github.com/fluttercommunity/flutter_launcher_icons/pull/298)
-- Added `min_sdk_android` option [#392](https://github.com/fluttercommunity/flutter_launcher_icons/pull/392)
-- Added documentation for `remove_alpha_ios` [#392](https://github.com/fluttercommunity/flutter_launcher_icons/pull/392)
-- Fixed issue with loading config from `pubspec.yaml` [#398](https://github.com/fluttercommunity/flutter_launcher_icons/pull/398) (thanks to [@p-mazhnik](https://github.com/p-mazhnik))
+- Support for Web Icons [#374](https://github.com/fluttercommunity/flutter_launcher_icons_all/pull/374)
+- Support for Windows Icons [#382](https://github.com/fluttercommunity/flutter_launcher_icons_all/pull/382)
+- Added missing IOS icon sizes [#298](https://github.com/fluttercommunity/flutter_launcher_icons_all/pull/298)
+- Added `min_sdk_android` option [#392](https://github.com/fluttercommunity/flutter_launcher_icons_all/pull/392)
+- Added documentation for `remove_alpha_ios` [#392](https://github.com/fluttercommunity/flutter_launcher_icons_all/pull/392)
+- Fixed issue with loading config from `pubspec.yaml` [#398](https://github.com/fluttercommunity/flutter_launcher_icons_all/pull/398) (thanks to [@p-mazhnik](https://github.com/p-mazhnik))
 
 ## 0.9.3 (6th June 2022)
 
@@ -72,7 +71,7 @@
 
 ## 0.7.4 (28th Oct 2019)
 
-- Worked on suggestions from [pub.dev](https://pub.dev/packages/flutter_launcher_icons#-analysis-tab-)
+- Worked on suggestions from [pub.dev](https://pub.dev/packages/flutter_launcher_icons_all#-analysis-tab-)
 
 ## 0.7.3 (3rd Sept 2019)
 

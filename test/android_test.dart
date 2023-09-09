@@ -29,11 +29,7 @@ void main() {
   });
 
   test('Config contains string for generating new launcher icons', () {
-    final Map<String, dynamic> flutterIconsConfig = <String, dynamic>{
-      'image_path': 'assets/images/icon-710x599.png',
-      'android': true,
-      'ios': true
-    };
+    final Map<String, dynamic> flutterIconsConfig = <String, dynamic>{'image_path': 'assets/images/icon-710x599.png', 'android': true, 'ios': true};
     expect(
       Config.fromJson(flutterIconsConfig).isCustomAndroidFile,
       isFalse,
@@ -119,10 +115,8 @@ void main() {
     });
   });
 
-  test('Transforming manifest with special newline characters should leave special newline characters untouched',
-      () async {
-    final String inputManifest =
-        getAndroidManifestExample('android:icon="@mipmap/ic_launcher"').replaceAll('\n', '\r\n');
+  test('Transforming manifest with special newline characters should leave special newline characters untouched', () async {
+    final String inputManifest = getAndroidManifestExample('android:icon="@mipmap/ic_launcher"').replaceAll('\n', '\r\n');
     final String expectedManifest = inputManifest;
 
     await withTempFile('AndroidManifest.xml', (File androidManifestFile) async {

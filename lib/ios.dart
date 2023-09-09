@@ -110,7 +110,7 @@ void createIcons(Config config, String? flavor) {
 
 /// Note: Do not change interpolation unless you end up with better results (see issue for result when using cubic
 /// interpolation)
-/// https://github.com/fluttercommunity/flutter_launcher_icons_all/issues/101#issuecomment-495528733
+/// https://github.com/lowmanav/flutter_launcher_icons_all/issues/101#issuecomment-495528733
 void overwriteDefaultIcons(IosIconTemplate template, Image image) {
   final Image newFile = createResizedImage(template, image);
   File(iosDefaultIconFolder + iosDefaultIconName + template.name + '.png')..writeAsBytesSync(encodePng(newFile));
@@ -118,7 +118,7 @@ void overwriteDefaultIcons(IosIconTemplate template, Image image) {
 
 /// Note: Do not change interpolation unless you end up with better results (see issue for result when using cubic
 /// interpolation)
-/// https://github.com/fluttercommunity/flutter_launcher_icons_all/issues/101#issuecomment-495528733
+/// https://github.com/lowmanav/flutter_launcher_icons_all/issues/101#issuecomment-495528733
 void saveNewIcons(IosIconTemplate template, Image image, String newIconName) {
   final String newIconFolder = iosAssetFolder + newIconName + '.appiconset/';
   final Image newFile = createResizedImage(template, image);
@@ -168,9 +168,7 @@ Future<void> changeIosLauncherIcon(String iconName, String? flavor) async {
         currentConfig = match.group(1);
       }
 
-      if (currentConfig != null &&
-          (flavor == null || currentConfig.contains('-$flavor')) &&
-          line.contains('ASSETCATALOG')) {
+      if (currentConfig != null && (flavor == null || currentConfig.contains('-$flavor')) && line.contains('ASSETCATALOG')) {
         lines[x] = line.replaceAll(RegExp('\=(.*);'), '= $iconName;');
       }
     }
@@ -386,8 +384,7 @@ List<Map<String, String>> createImageList(String fileNamePrefix) {
 }
 
 ColorUint8 _getBackgroundColor(Config config) {
-  final backgroundColorHex =
-      config.backgroundColorIOS.startsWith('#') ? config.backgroundColorIOS.substring(1) : config.backgroundColorIOS;
+  final backgroundColorHex = config.backgroundColorIOS.startsWith('#') ? config.backgroundColorIOS.substring(1) : config.backgroundColorIOS;
   if (backgroundColorHex.length != 6) {
     throw Exception('background_color_ios hex should be 6 characters long');
   }

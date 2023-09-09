@@ -251,7 +251,7 @@ void updateColorsFile(File colorsFile, String backgroundColor) {
 /// Overrides the existing launcher icons in the project
 /// Note: Do not change interpolation unless you end up with better results (see issue for result when using cubic
 /// interpolation)
-/// https://github.com/fluttercommunity/flutter_launcher_icons_all/issues/101#issuecomment-495528733
+/// https://github.com/lowmanav/flutter_launcher_icons_all/issues/101#issuecomment-495528733
 void overwriteExistingIcons(
   AndroidIconTemplate template,
   Image image,
@@ -268,7 +268,7 @@ void overwriteExistingIcons(
 
 /// Saves new launcher icons to the project, keeping the old launcher icons.
 /// Note: Do not change interpolation unless you end up with better results
-/// https://github.com/fluttercommunity/flutter_launcher_icons_all/issues/101#issuecomment-495528733
+/// https://github.com/lowmanav/flutter_launcher_icons_all/issues/101#issuecomment-495528733
 void _saveNewImages(
   AndroidIconTemplate template,
   Image image,

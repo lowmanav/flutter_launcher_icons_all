@@ -152,8 +152,7 @@ class Config {
   factory Config.fromJson(Map json) => _$ConfigFromJson(json);
 
   /// whether or not there is configuration for adaptive icons for android
-  bool get hasAndroidAdaptiveConfig =>
-      isNeedingNewAndroidIcon && adaptiveIconForeground != null && adaptiveIconBackground != null;
+  bool get hasAndroidAdaptiveConfig => isNeedingNewAndroidIcon && adaptiveIconForeground != null && adaptiveIconBackground != null;
 
   /// Checks if contains any platform config
   bool get hasPlatformConfig {
@@ -186,7 +185,7 @@ class Config {
   String? getImagePathAndroid() => imagePathAndroid ?? imagePath;
 
   // TODO(RatakondalaArun): refactor after Android & iOS configs will be refactored to the new schema
-  // https://github.com/fluttercommunity/flutter_launcher_icons_all/issues/394
+  // https://github.com/lowmanav/flutter_launcher_icons_all/issues/394
   /// get the image path for IOS
   String? getImagePathIOS() => imagePathIOS ?? imagePath;
 

@@ -105,11 +105,7 @@ flutter_launcher_icons_all:
   });
 
   test('image_path is in config', () {
-    final Map<String, dynamic> flutterIconsConfig = <String, dynamic>{
-      'image_path': 'assets/images/icon-710x599.png',
-      'android': true,
-      'ios': true
-    };
+    final Map<String, dynamic> flutterIconsConfig = <String, dynamic>{'image_path': 'assets/images/icon-710x599.png', 'android': true, 'ios': true};
     final config = Config.fromJson(flutterIconsConfig);
     expect(
       config.getImagePathAndroid(),
@@ -142,11 +138,7 @@ flutter_launcher_icons_all:
   });
 
   test('At least one platform is in config file', () {
-    final Map<String, dynamic> flutterIconsConfig = <String, dynamic>{
-      'image_path': 'assets/images/icon-710x599.png',
-      'android': true,
-      'ios': true
-    };
+    final Map<String, dynamic> flutterIconsConfig = <String, dynamic>{'image_path': 'assets/images/icon-710x599.png', 'android': true, 'ios': true};
     final config = Config.fromJson(flutterIconsConfig);
     expect(config.hasPlatformConfig, isTrue);
   });
@@ -158,39 +150,25 @@ flutter_launcher_icons_all:
   });
 
   test('No new Android icon needed - android: false', () {
-    final Map<String, dynamic> flutterIconsConfig = <String, dynamic>{
-      'image_path': 'assets/images/icon-710x599.png',
-      'android': false,
-      'ios': true
-    };
+    final Map<String, dynamic> flutterIconsConfig = <String, dynamic>{'image_path': 'assets/images/icon-710x599.png', 'android': false, 'ios': true};
     final config = Config.fromJson(flutterIconsConfig);
     expect(config.isNeedingNewAndroidIcon, isFalse);
   });
 
   test('No new Android icon needed - no Android config', () {
-    final Map<String, dynamic> flutterIconsConfig = <String, dynamic>{
-      'image_path': 'assets/images/icon-710x599.png',
-      'ios': true
-    };
+    final Map<String, dynamic> flutterIconsConfig = <String, dynamic>{'image_path': 'assets/images/icon-710x599.png', 'ios': true};
     final config = Config.fromJson(flutterIconsConfig);
     expect(config.isNeedingNewAndroidIcon, isFalse);
   });
 
   test('No new iOS icon needed - ios: false', () {
-    final Map<String, dynamic> flutterIconsConfig = <String, dynamic>{
-      'image_path': 'assets/images/icon-710x599.png',
-      'android': true,
-      'ios': false
-    };
+    final Map<String, dynamic> flutterIconsConfig = <String, dynamic>{'image_path': 'assets/images/icon-710x599.png', 'android': true, 'ios': false};
     final config = Config.fromJson(flutterIconsConfig);
     expect(config.isNeedingNewIOSIcon, isFalse);
   });
 
   test('No new iOS icon needed - no iOS config', () {
-    final Map<String, dynamic> flutterIconsConfig = <String, dynamic>{
-      'image_path': 'assets/images/icon-710x599.png',
-      'android': true
-    };
+    final Map<String, dynamic> flutterIconsConfig = <String, dynamic>{'image_path': 'assets/images/icon-710x599.png', 'android': true};
     final config = Config.fromJson(flutterIconsConfig);
     expect(config.isNeedingNewIOSIcon, isFalse);
   });

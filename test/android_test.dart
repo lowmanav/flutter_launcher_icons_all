@@ -38,7 +38,7 @@ void main() {
     final Map<String, dynamic> flutterIconsNewIconConfig = <String, dynamic>{
       'image_path': 'assets/images/icon-710x599.png',
       'android': 'New Icon',
-      'ios': true
+      'ios': true,
     };
     expect(
       Config.fromJson(flutterIconsNewIconConfig).isCustomAndroidFile,
@@ -51,7 +51,7 @@ void main() {
       'image_path': 'assets/images/icon-710x599.png',
       'image_path_android': 'assets/images/icon-android.png',
       'android': 'New Icon',
-      'ios': true
+      'ios': true,
     };
     expect(
       Config.fromJson(flutterIconsNewIconConfig).getImagePathAndroid(),

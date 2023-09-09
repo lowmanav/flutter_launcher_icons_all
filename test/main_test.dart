@@ -115,7 +115,7 @@ flutter_launcher_icons_all:
     final Map<String, dynamic> flutterIconsConfigAndroid = <String, dynamic>{
       'image_path_android': 'assets/images/icon-710x599.png',
       'android': true,
-      'ios': true
+      'ios': true,
     };
     final configAndroid = Config.fromJson(flutterIconsConfigAndroid);
     expect(
@@ -127,7 +127,7 @@ flutter_launcher_icons_all:
       'image_path_android': 'assets/images/icon-android.png',
       'image_path_ios': 'assets/images/icon-ios.png',
       'android': true,
-      'ios': true
+      'ios': true,
     };
     final configBoth = Config.fromJson(flutterIconsConfigBoth);
     expect(
